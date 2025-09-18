@@ -1,0 +1,9 @@
+How They Work Together
+Data Collection: Prometheus scrapes metrics from applications and services at regular intervals.
+Data Storage: The collected metrics are stored in Prometheus's time-series database.
+Data Visualization: Grafana connects to Prometheus as a data source, allowing users to create dashboards that visualize the metrics.
+Alerting: Both tools can be configured to send alerts based on specific conditions, ensuring that teams are notified of issues in real-time.
+Example Use Cases
+Infrastructure Monitoring: Track CPU, memory, and disk usage across servers.
+Application Performance Monitoring: Monitor response times, error rates, and throughput for web applications.
+Business Metrics: Visualize key performance indicators (KPIs) such as user sign-ups, sales, or other business-related metrics.
