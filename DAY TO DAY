@@ -29,5 +29,9 @@ aws terraform
 in a team we use remote state backend for statefile and it  will be in s3 buckets for remote backend state and integrated s3 bucket with dynamo DB.so our statefile will be in  s3 and it will be locked by dynamodb so that no one can work on that 
 unless someone has completed work on corresponding terraform script and once that is done it will be unloacked  and next person will work on that.
 
+we create ingress configurations for each of these configurations ,ingress controller acts as reverse proxy to k8s cluster.when someone tries to access application then ingress controller receives the requests from vpc it sends back depending on ingress
+rules configured.
+
+
 
 
