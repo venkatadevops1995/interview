@@ -1,0 +1,100 @@
+1. Kubernetes Master–Slave Architecture
+
+Q: Explain Kubernetes architecture.
+A:
+
+Master (Control Plane): API Server, Scheduler, Controller Manager, etcd (stores cluster state).
+
+Worker Nodes: Kubelet, Kube-proxy, Container Runtime (runs pods).
+
+Flow: Master schedules pods → kubelet runs them on nodes → kube-proxy handles service networking.
+
+2. Security in Kubernetes
+
+Q: How do you secure a Kubernetes cluster?
+A:
+
+RBAC: Restrict user/service permissions.
+
+Network Policies: Limit pod-to-pod communication.
+
+TLS Everywhere: Secure API server, kubelet.
+
+Image Security: Scan for vulnerabilities.
+
+Secrets Management: Use Kubernetes secrets, encrypt at rest.
+
+Audit Logs: Track cluster actions.
+
+3. Disaster Recovery in Kubernetes
+
+Q: How do you handle DR in Kubernetes?
+A:
+
+Backup etcd (critical for cluster state).
+
+Use Velero or Kasten to back up namespaces, resources, and PVs.
+
+Keep manifests (YAML/Helm charts) in Git (GitOps).
+
+Have multi-cluster setup or cluster federation for HA.
+
+4. Probes in Kubernetes
+
+Q: What are probes?
+A:
+
+Liveness Probe: Checks if container is healthy (restart if fails).
+
+Readiness Probe: Checks if pod is ready to serve traffic.
+
+Startup Probe: Used for slow-starting apps, avoids premature restarts.
+
+5. Pod Errors
+
+Q: Common pod error types and fixes?
+A:
+
+CrashLoopBackOff: App keeps crashing (check logs).
+
+ImagePullBackOff: Wrong image name/registry auth issue.
+
+Pending: No available node resources or unsatisfied affinity/taints.
+
+OOMKilled: Pod exceeding memory limits.
+
+6. Pod Lifecycle
+
+Q: Explain pod lifecycle.
+A:
+Pending → Running → Succeeded / Failed → (Terminating on delete).
+Controlled by kubelet + controllers.
+
+7. Pod Affinity
+
+Q: What is pod affinity/anti-affinity?
+A:
+
+Affinity: Co-locate pods on same node/zone (better performance).
+
+Anti-Affinity: Spread pods across nodes (better availability).
+
+8. Stateful vs Stateless Apps
+
+Q: Difference between stateful and stateless?
+A:
+
+Stateless: No saved state, can scale easily (e.g. Nginx).
+
+Stateful: Requires persistent storage, same identity (e.g. DB). Use StatefulSets.
+
+9. Ingress Controller & ConfigMaps
+
+Q: Role of ingress controller?
+A:
+
+Ingress Controller: Exposes HTTP/HTTPS apps via single external IP, does routing, SSL termination.
+Q: Role of ConfigMaps?
+A:
+
+Stores non-sensitive config (key-value). Mounted as env variables or files.
