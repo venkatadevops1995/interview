@@ -1,0 +1,75 @@
+📦 What is a Helm Chart?
+
+A Helm Chart is a collection of files that describe a set of Kubernetes resources.
+
+Each chart is parameterized, so you can deploy the same app with different configs using a values.yaml.
+
+Chart Structure Example:
+
+mychart/
+├── Chart.yaml          # Chart metadata (name, version)
+├── values.yaml         # Default values (configurable)
+├── charts/             # Dependencies (other charts)
+├── templates/          # K8s resource YAML templates
+│   ├── deployment.yaml
+│   ├── service.yaml
+│   └── _helpers.tpl    # Template helpers
+└── .helmignore         # Files to ignore
+
+🎯 Why Use Helm?
+
+Templating: Avoid writing multiple YAMLs for each environment.
+
+Versioning: Easy rollback/upgrade of releases.
+
+Reusability: Share charts across teams or pull from public repos.
+
+Simplified Deployments: helm install myapp ./mychart instead of applying multiple YAMLs manually.
+
+📜 Key Helm Commands
+Command	Purpose
+helm create mychart	Scaffold a new chart
+helm install myapp ./mychart	Install a chart into the cluster
+helm upgrade myapp ./mychart	Upgrade release with new config
+helm rollback myapp 1	Roll back to previous version
+helm uninstall myapp	Remove a release
+helm repo add bitnami https://charts.bitnami.com/bitnami	Add a chart repo
+helm repo update	Refresh repo index
+helm search repo mysql	Search for a chart
+helm template ./mychart	Render templates locally (no install)
+helm lint ./mychart	Validate chart syntax
+🧠 How a Helm Chart Works
+
+You run helm install <release> <chart>.
+
+Helm takes templates/*.yaml + merges values.yaml → generates actual manifests.
+
+These manifests are sent to kube-apiserver.
+
+The release is stored in the cluster as a Secret (for tracking versions).
+
+🔧 Customization with Values
+
+You can override values during install/upgrade:
+
+helm install myapp ./mychart --values custom-values.yaml
+# OR override single values
+helm install myapp ./mychart --set replicaCount=3,image.tag=v2
+
+📚 Real-Time Use Cases
+
+Deploying Databases (e.g., PostgreSQL, MySQL) from Bitnami charts.
+
+Deploying monitoring stacks like Prometheus + Grafana.
+
+Packaging microservices for customers.
+
+📌 Best Practices
+
+Keep values.yaml environment-agnostic; maintain separate values-dev.yaml, values-prod.yaml.
+
+Use _helpers.tpl for reusing labels/names.
+
+Lint (helm lint) before deploying to catch errors.
+
+Version control charts and use CI/CD for Helm releases.
