@@ -1,0 +1,33 @@
+PRIMARY RESPONSIBILITY IS TO BUILD CI/CD PIPELINES INTEGRATING MULTIPLE STAGES INTO THE PIPELINE.
+I do write ci/cd pipleine for applications there are multiple stages like unit testing,static code analysis and we do create images publish images.i am even responsible for automation of infra on aws cloud using terraform.Aprt from this i work on kubernetes
+for production deployments.THis is bried itro of myself.
+
+day to day
+
+ci/cd tasks
+release on specific sprint
+creation of infra on terraform.
+
+cicd overview
+
+In our organisation we mostly use jenkins for ci/cd.whenever developer commits code changes into github we haave configured jenkins pipelines using github webhooks. The pipeline is triggered when ever code is committed we have multiple stages 
+first stage is unit test execution and and static code analysis.ONCE it is done successfully we build artifact that we put inside docker image.we scan docker image for chcking vulnerabilities using a tool called trivy once that is done and our 
+image is free from vulnerabilities we excute our end to end test and after that we place docker image in docker registry.
+
+docker image is used for cd and we deploy that into preprod using EKS.
+
+eks setup done with terraform.
+
+secure eks
+
+RBAC
+
+eks chanllenge
+==============================
+aws terraform
+
+in a team we use remote state backend for statefile and it  will be in s3 buckets for remote backend state and integrated s3 bucket with dynamo DB.so our statefile will be in  s3 and it will be locked by dynamodb so that no one can work on that 
+unless someone has completed work on corresponding terraform script and once that is done it will be unloacked  and next person will work on that.
+
+
+
