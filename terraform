@@ -1,0 +1,103 @@
+Core Concepts & Architecture
+
+State Management
+
+How do you handle Terraform state in a team environment?
+
+What happens if your terraform.tfstate file is lost or corrupted? How do you recover?
+
+How does remote state locking work and what backends support it?
+
+Can you manually edit the terraform.tfstate file? When is it safe/unsafe?
+
+Lifecycle & Resource Behavior
+
+Explain create_before_destroy vs prevent_destroy. When would you use them?
+
+What happens if you manually delete a resource outside of Terraform?
+
+What will terraform plan and terraform apply do next?
+
+How do you import existing infrastructure into Terraform?
+
+Provisioners & Dependencies
+
+Why are provisioners considered a last resort?
+
+Explain depends_on and implicit dependency creation.
+
+How do you handle cases where a resource has a dynamic dependency on another?
+
+Complex Scenarios
+
+Modules
+
+How do you version control and share Terraform modules across multiple teams?
+
+How do you make a module reusable across different environments (dev/stage/prod)?
+
+Difference between locals vs variables inside a module.
+
+Workspaces
+
+When do you prefer workspaces over separate state files?
+
+Can you explain pitfalls of workspaces for managing environments?
+
+Data Sources
+
+How do you use data sources to fetch existing resources?
+
+Example scenario: Your EC2 instance needs to attach to an existing VPC. Show how you’d do it.
+
+Performance & Scaling
+
+Large Infrastructure
+
+How do you speed up terraform plan for a large codebase?
+
+How do you split monolithic Terraform code into multiple state files or workspaces?
+
+Parallelism
+
+What is -parallelism flag in Terraform apply? When would you tune it?
+
+Troubleshooting & Debugging
+
+Drift Detection
+
+How do you detect drift in resources managed by Terraform?
+
+What steps do you take if Terraform wants to replace a critical resource unexpectedly?
+
+Terraform Debugging
+
+How do you debug Terraform errors?
+
+Explain TF_LOG=TRACE and when you’d use it.
+
+Real-World Challenges
+
+Zero-Downtime Deployments
+
+How would you update a database password using Terraform without downtime?
+
+How do you roll out a change that requires recreating an autoscaling group?
+
+Sensitive Data
+
+How do you handle secrets (like DB passwords, API keys) in Terraform?
+
+Difference between using sensitive = true and using a vault provider.
+
+Cloud Provider Specific
+
+Provider Versioning
+
+How do you lock a specific provider version?
+
+What happens if HashiCorp releases a breaking change in a provider you use?
+
+Multi-Cloud Setup
+
+How do you configure multiple providers (like AWS + GCP) in a single Terraform project?
